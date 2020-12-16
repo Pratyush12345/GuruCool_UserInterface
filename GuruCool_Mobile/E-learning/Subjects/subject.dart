@@ -1,24 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qwe/utils/Colors.dart';
-class SizeConfig {
-MediaQueryData _mediaQueryData;
-static double screenWidth;
-static double screenHeight;
-static double _safeAreaHorizontal;
-static double _safeAreaVertical;
-static double b;
-static double v;
+import '../../utils/sizeConfig.dart';
 
-void init(BuildContext context) {
-_mediaQueryData = MediaQuery.of(context);
-screenHeight = _mediaQueryData.size.height;
-screenWidth = _mediaQueryData.size.width;
-_safeAreaHorizontal =_mediaQueryData.padding.left + _mediaQueryData.padding.right;
-_safeAreaVertical =_mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
-b = (screenWidth - _safeAreaHorizontal) / 100;
-v = (screenHeight - _safeAreaVertical) / 100;
-}
-}
 
 class Subject extends StatelessWidget {
   final String sub;
@@ -92,14 +75,19 @@ shrinkWrap: true,
 itemCount: 10,
 itemBuilder: (BuildContext ctxt, int index) {
 return Card(
-margin: EdgeInsets.only(right: SizeConfig.screenWidth * 0.0277,left:SizeConfig.screenWidth * 0.0277,
-top:index!=0? SizeConfig.screenHeight * 0.03125/2:0,bottom:SizeConfig.screenHeight * 0.03125/2),
+margin: EdgeInsets.only(
+  right: SizeConfig.screenWidth * 0.0277,
+  left:SizeConfig.screenWidth * 0.0277,
+  top:index!=0? SizeConfig.screenHeight * 0.03125/2:0,
+  bottom:SizeConfig.screenHeight * 0.03125/2),
 shape: RoundedRectangleBorder(
 borderRadius: BorderRadius.circular(
 SizeConfig.b * 2.5)),
 elevation: 7,
 child:Container(
-padding:EdgeInsets.symmetric(horizontal:SizeConfig.screenWidth*0.07,vertical:SizeConfig.screenHeight*0.022),
+padding:EdgeInsets.symmetric(
+  horizontal:SizeConfig.screenWidth*0.07,
+  vertical:SizeConfig.screenHeight*0.022),
 height:SizeConfig.screenHeight*0.1703,
 decoration:BoxDecoration(
 borderRadius: BorderRadius.circular(
@@ -111,8 +99,11 @@ Row(children:[
 Column(
 crossAxisAlignment: CrossAxisAlignment.start, 
 children:[  
-Text(this.sub,style:TextStyle(fontWeight: FontWeight.w400,color:Colors.white,
-fontSize:SizeConfig.screenWidth*0.0567)),
+Text(this.sub,
+     style:TextStyle(
+       fontWeight: FontWeight.w400,
+       color:Colors.white,
+       fontSize:SizeConfig.screenWidth*0.0567)),
 SizedBox(height:SizeConfig.v*2.2),  
 Row(children:[
 Icon(Icons.person,color:Colors.white,size:SizeConfig.b*3.4),  
