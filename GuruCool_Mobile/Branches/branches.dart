@@ -2,24 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import './utils/sizeConfig.dart';
 
-void main() {
-runApp(MyApp());
-}
 
-final bgColor = Color(0xffE5E5E5);
 
-class MyApp extends StatelessWidget {
-@override
-Widget build(BuildContext context) {
-return MaterialApp(
-debugShowCheckedModeBanner: false,
-theme: ThemeData(
-visualDensity: VisualDensity.adaptivePlatformDensity,
-),
-home: Branches(branchName:"Lucknow Public School",instituteCounts:5,schoolName: "Central Public School",
-schoolCode:100101,address: "Link road, park building, Partparganj, New Delhi"));
-}
-}
+
+
+
 
 class Branches extends StatelessWidget {
 final String schoolName;
