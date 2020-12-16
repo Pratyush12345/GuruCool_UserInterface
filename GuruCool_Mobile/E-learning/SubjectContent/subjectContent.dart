@@ -3,42 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:qwe/utils/Colors.dart';
 import 'package:qwe/utils/bottom.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../../utils/sizeConfig.dart';
 
-void main() {
-runApp(MyApp());
-}
-class SizeConfig {
-MediaQueryData _mediaQueryData;
-static double screenWidth;
-static double screenHeight;
-static double _safeAreaHorizontal;
-static double _safeAreaVertical;
-static double b;
-static double v;
-
-void init(BuildContext context) {
-_mediaQueryData = MediaQuery.of(context);
-screenHeight = _mediaQueryData.size.height;
-screenWidth = _mediaQueryData.size.width;
-_safeAreaHorizontal =_mediaQueryData.padding.left + _mediaQueryData.padding.right;
-_safeAreaVertical =_mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
-b = (screenWidth - _safeAreaHorizontal) / 100;
-v = (screenHeight - _safeAreaVertical) / 100;
-}
-}
-
-
-class MyApp extends StatelessWidget {  
-@override
-Widget build(BuildContext context) {
-return MaterialApp(
-debugShowCheckedModeBanner: false,
-theme: ThemeData(
-visualDensity: VisualDensity.adaptivePlatformDensity,
-),
-home: SubjectContent(subjectName:"Mathematics"));
-}
-}
 class SubjectContent extends StatelessWidget {
 final String courseId;
 final String contentType;
@@ -69,8 +35,11 @@ onPressed: () {
 print('Show menu');
 }),
 title:Transform(transform: Matrix4.translationValues(-SizeConfig.screenWidth*0.06, 0, 0),
-child:Text(this.subjectName,style: TextStyle(color: gc, fontWeight: FontWeight.w400,
-fontSize:SizeConfig.screenWidth*0.05))),
+child:Text(this.subjectName,
+           style: TextStyle(
+            color: gc,
+            fontWeight: FontWeight.w400,
+            fontSize:SizeConfig.screenWidth*0.05))),
 actions: [
 Row(children:[
 IconButton(icon: Icon(Icons.notifications_none,color: gc),
@@ -119,7 +88,9 @@ SizedBox(width:SizeConfig.b*2),
 Icon(Icons.search, color: Color(0xffF36C24)),  
 SizedBox(width:SizeConfig.b*2),  
 Container(
-padding:EdgeInsets.symmetric(horizontal: SizeConfig.b*1,vertical:SizeConfig.v*0),   
+padding:EdgeInsets.symmetric(
+ horizontal: SizeConfig.b*1,
+ vertical:SizeConfig.v*0),   
 width:SizeConfig.screenWidth*0.5,  
 child:TextField(
 textInputAction: TextInputAction.search,  
@@ -127,7 +98,7 @@ keyboardType: TextInputType.text,
 maxLines:1, 
 style:TextStyle(
 fontSize: SizeConfig.b * 3.5,
-fontWeight: FontWeight.w400), 
+fontWeight : FontWeight.w400), 
 //controller: _searchInputController,
 decoration: InputDecoration(
 border: InputBorder.none,
@@ -156,8 +127,13 @@ onPressed: null,
 child:Row(
 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 children:[
-Icon(MdiIcons.youtube,color:Colors.white,size:SizeConfig.screenWidth*0.05), 
-Text("Live Session",style:TextStyle(color:Colors.white,fontSize:SizeConfig.screenWidth*0.0278)) 
+Icon(MdiIcons.youtube,
+     color:Colors.white,
+     size:SizeConfig.screenWidth*0.05), 
+Text("Live Session",
+     style:TextStyle(
+      color:Colors.white,
+      fontSize:SizeConfig.screenWidth*0.0278)) 
 ])
 )
 )
@@ -185,7 +161,10 @@ color:index%2==0?Color.fromRGBO(243, 108, 36, 0.7):tc,
 borderRadius: BorderRadius.circular(3),
 ),
 alignment: Alignment.center,
-child:Text("CH 1",style:TextStyle(color:Colors.white,fontWeight:FontWeight.w700),
+child:Text("CH 1",
+           style:TextStyle(
+            color:Colors.white,
+            fontWeight:FontWeight.w700),
 )),
 SizedBox(width:SizeConfig.screenWidth*0.042),
 Container(
@@ -193,7 +172,9 @@ width:SizeConfig.screenWidth*0.7,
 child:Column(
 crossAxisAlignment: CrossAxisAlignment.start,  
 children:[
-Text("Subject Name",style:TextStyle(fontSize:SizeConfig.screenWidth*0.045)),  
+Text("Subject Name",
+     style:TextStyle(
+      fontSize:SizeConfig.screenWidth*0.045)),  
 ]))
 ]),
 Container(
@@ -222,14 +203,19 @@ mainAxisSize: MainAxisSize.min,
 children:
 [
 Container(
-margin: EdgeInsets.symmetric(vertical: SizeConfig.screenHeight*0.0266),
-padding: EdgeInsets.symmetric(horizontal: SizeConfig.screenWidth *0.04722),
+margin: EdgeInsets.symmetric(
+ vertical: SizeConfig.screenHeight*0.0266),
+padding: EdgeInsets.symmetric(
+ horizontal: SizeConfig.screenWidth *0.04722),
 child: Column(
 children: [
 TextField(
 decoration: InputDecoration(
 isDense: true,
-contentPadding: EdgeInsets.only(left: SizeConfig.b * 2.6,top: SizeConfig.v,bottom: SizeConfig.v),
+contentPadding: EdgeInsets.only(
+ left: SizeConfig.b * 2.6,
+ top: SizeConfig.v,
+ bottom: SizeConfig.v),
 border: OutlineInputBorder(),
 hintText: 'Subject Name',
 focusedBorder: OutlineInputBorder(
@@ -255,8 +241,11 @@ onPressed: () {},
 minWidth: SizeConfig.screenWidth * 0.25,
 shape: RoundedRectangleBorder(
 borderRadius:BorderRadius.circular(SizeConfig.b * 1.4)),
-child: Text('Add',style: TextStyle(fontWeight: FontWeight.w500,color: Colors.white,
-fontSize: SizeConfig.screenWidth * 0.039),),
+child: Text('Add',
+            style: TextStyle(
+             fontWeight: FontWeight.w500,
+             color: Colors.white,
+             fontSize: SizeConfig.screenWidth * 0.039),),
 )
 ],
 )

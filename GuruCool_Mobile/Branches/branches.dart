@@ -2,24 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
 import './utils/sizeConfig.dart';
 
-void main() {
-runApp(MyApp());
-}
 
-final bgColor = Color(0xffE5E5E5);
-
-class MyApp extends StatelessWidget {
-@override
-Widget build(BuildContext context) {
-return MaterialApp(
-debugShowCheckedModeBanner: false,
-theme: ThemeData(
-visualDensity: VisualDensity.adaptivePlatformDensity,
-),
-home: Branches(branchName:"Lucknow Public School",instituteCounts:5,schoolName: "Central Public School",
-schoolCode:100101,address: "Link road, park building, Partparganj, New Delhi"));
-}
-}
 
 class Branches extends StatelessWidget {
 final String schoolName;
@@ -57,8 +40,12 @@ blurRadius: SizeConfig.b * 1.5,
 offset: Offset(2, 2))
 ],
 gradient: LinearGradient(
-begin: Alignment.topCenter,end: Alignment.bottomCenter,
-colors: [Color(0xff2E3842),Color(0xff4E7391),])),
+begin: Alignment.topCenter,
+  end: Alignment.bottomCenter,
+colors: [
+  Color(0xff2E3842),
+  Color(0xff4E7391),
+])),
 height: SizeConfig.screenHeight * 0.177,
 child: Stack(
 children: [
@@ -89,9 +76,17 @@ width: SizeConfig.screenWidth * 0.5,
 child: Column(
 crossAxisAlignment: CrossAxisAlignment.start,
 children: [
-Text(this.branchName,style: TextStyle(color: Colors.white,fontSize: SizeConfig.b * 3.89,fontWeight: FontWeight.w700)),
+Text(this.branchName,
+     style: TextStyle(
+       color: Colors.white,
+       fontSize: SizeConfig.b * 3.89,
+       fontWeight: FontWeight.w700)),
 SizedBox(height: 3),
-Text("Total Institutes : ${this.instituteCounts}",style: TextStyle(color: Colors.white,fontSize: SizeConfig.b * 3,fontWeight: FontWeight.w400))
+Text("Total Institutes : ${this.instituteCounts}",
+     style: TextStyle(
+       color: Colors.white,
+       fontSize: SizeConfig.b * 3,
+       fontWeight: FontWeight.w400))
 ],
 ))),
 ],
@@ -129,7 +124,10 @@ border: InputBorder.none,
 hintText:
 'Search by Branch code, Name and Address',
 isDense: true,
-hintStyle: TextStyle(fontSize: SizeConfig.b * 3,color: Color(0xff848484),fontWeight: FontWeight.w400)),
+hintStyle: TextStyle(
+  fontSize: SizeConfig.b * 3,
+  color: Color(0xff848484),
+  fontWeight: FontWeight.w400)),
 ),
 )
 ]),
@@ -180,7 +178,8 @@ Color(0xFF23619F),
 alignment: Alignment.center,
 child: Text(this.schoolCode.toString(),
 style: TextStyle(color: Colors.white,
-fontSize:SizeConfig.screenWidth *0.045,fontWeight:FontWeight.w700))),
+                fontSize:SizeConfig.screenWidth *0.045,
+                 fontWeight:FontWeight.w700))),
 SizedBox(width: SizeConfig.b * 5),
 Container(
 width: SizeConfig.screenWidth * 0.6,
@@ -188,8 +187,14 @@ child: Column(
 mainAxisAlignment: MainAxisAlignment.start,  
 crossAxisAlignment:CrossAxisAlignment.start,
 children: [
-Text(this.schoolName,style: TextStyle(fontSize: SizeConfig.screenWidth *0.045,fontWeight:FontWeight.w500)),
-Text(this.address,style: TextStyle(fontSize: SizeConfig.screenWidth *0.031,fontWeight:FontWeight.w400)),
+Text(this.schoolName,
+     style: TextStyle(
+       fontSize: SizeConfig.screenWidth *0.045,
+       fontWeight:FontWeight.w500)),
+Text(this.address,
+     style: TextStyle(
+       fontSize: SizeConfig.screenWidth *0.031,
+       fontWeight:FontWeight.w400)),
 
 ]))
 ])),
@@ -203,14 +208,18 @@ width: SizeConfig.screenWidth * 1,
 decoration: BoxDecoration(
 color: Color(0xff2E3842),
 borderRadius: BorderRadius.only(
-topRight: Radius.circular(10), topLeft: Radius.circular(10))),
+topRight: Radius.circular(10), 
+  topLeft: Radius.circular(10))),
 height: SizeConfig.screenWidth * 0.056,
-child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+child: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
 Container(
 width: SizeConfig.screenWidth * 0.076,
 height: SizeConfig.v * 0.33,
 decoration: BoxDecoration(
-color: Colors.white, borderRadius: BorderRadius.circular(2)),
+color: Colors.white,
+  borderRadius: BorderRadius.circular(2)),
 )
 ]),
 ),
