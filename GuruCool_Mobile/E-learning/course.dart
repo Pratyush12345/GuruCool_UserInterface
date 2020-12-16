@@ -1,40 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qwe/utils/bottom.dart';
 import 'package:qwe/utils/Colors.dart';
-void main() {
-runApp(MyApp());
-}
-class SizeConfig {
-MediaQueryData _mediaQueryData;
-static double screenWidth;
-static double screenHeight;
-static double _safeAreaHorizontal;
-static double _safeAreaVertical;
-static double b;
-static double v;
+import '../../utils/sizeConfig.dart';
 
-void init(BuildContext context) {
-_mediaQueryData = MediaQuery.of(context);
-screenHeight = _mediaQueryData.size.height;
-screenWidth = _mediaQueryData.size.width;
-_safeAreaHorizontal =_mediaQueryData.padding.left + _mediaQueryData.padding.right;
-_safeAreaVertical =_mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
-b = (screenWidth - _safeAreaHorizontal) / 100;
-v = (screenHeight - _safeAreaVertical) / 100;
-}
-}
-
-class MyApp extends StatelessWidget {
-@override
-Widget build(BuildContext context) {
-return MaterialApp(
-debugShowCheckedModeBanner: false,
-theme: ThemeData(
-visualDensity: VisualDensity.adaptivePlatformDensity,
-),
-home: Course(schoolName:"Lucknow Public School",classNumber:"6",subjectNumber:"5"));
-}
-}
 
 class Course extends StatelessWidget {
 final String courseId;
@@ -65,8 +33,11 @@ icon: Icon(Icons.menu,color:gc,),
 onPressed: () {
 }),
 title:Transform(transform: Matrix4.translationValues(-SizeConfig.screenWidth*0.06, 0, 0),
-child:Text(this.schoolName,style: TextStyle(color: gc, fontWeight: FontWeight.w400,
-fontSize:SizeConfig.screenWidth*0.045))),
+child:Text(this.schoolName,
+           style: TextStyle(
+             color: gc,
+             fontWeight: FontWeight.w400,
+             fontSize:SizeConfig.screenWidth*0.045))),
 actions: [
 Row(children:[
 IconButton(icon: Icon(Icons.notifications_none,color: gc),
@@ -132,8 +103,13 @@ children:[
 //Image.asset('images/buk.png'),  
 ]), 
 Spacer(),
-Text("Class ${this.classNumber}",style:TextStyle(fontSize:SizeConfig.screenWidth*0.056,fontWeight:FontWeight.w300)),
-Text(" ${this.subjectNumber} Subjects",style:TextStyle(fontSize:SizeConfig.screenWidth*0.028,fontWeight:FontWeight.w400 )),
+Text("Class ${this.classNumber}",
+     style:TextStyle(
+       fontSize:SizeConfig.screenWidth*0.056,
+       fontWeight:FontWeight.w300)),
+Text(" ${this.subjectNumber} Subjects",style:TextStyle(
+  fontSize:SizeConfig.screenWidth*0.028,
+  fontWeight:FontWeight.w400 )),
 Row(
 mainAxisAlignment: MainAxisAlignment.end,  
 children:[
