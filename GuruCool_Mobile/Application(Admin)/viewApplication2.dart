@@ -4,14 +4,14 @@ import 'package:qwe/utils/Colors.dart';
 import 'package:qwe/utils/sizeConfig.dart';
 import 'package:qwe/utils/bottom.dart';
 
-class VerifyApplication extends StatelessWidget {
+class ViewApplication2 extends StatelessWidget {
   final String content;
   final String date;
   final String senderName;
   final String time;
   final passKey;
   final String titleName;
-  VerifyApplication({
+  ViewApplication2({
     @required this.content,
     @required this.passKey,
     @required this.date,
