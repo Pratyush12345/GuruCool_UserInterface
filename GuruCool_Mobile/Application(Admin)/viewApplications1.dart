@@ -3,57 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:A/utils/color.dart';
 import 'dart:math' as math;
-void main() {
-  runApp(MyApp());
-}
 
-class SizeConfig {
-  MediaQueryData _mediaQueryData;
-  static double screenWidth;
-  static double screenHeight;
-  static double _safeAreaHorizontal;
-  static double _safeAreaVertical;
-  static double b;
-  static double v;
-
-  void init(BuildContext context) {
-    _mediaQueryData = MediaQuery.of(context);
-    screenHeight = _mediaQueryData.size.height;
-    screenWidth = _mediaQueryData.size.width;
-    _safeAreaHorizontal =
-        _mediaQueryData.padding.left + _mediaQueryData.padding.right;
-    _safeAreaVertical =
-        _mediaQueryData.padding.top + _mediaQueryData.padding.bottom;
-    b = (screenWidth - _safeAreaHorizontal) / 100;
-    v = (screenHeight - _safeAreaVertical) / 100;
-  }
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: ViewApplication(
-          name: 'Nishant Singh',
-          applicationSubject:
-              'Subject of the Application Subject of the Application...',
-          date: '12/11/20',
-        ));
-  }
-}
 
 class ViewApplication extends StatelessWidget {
   final String name;
   final String applicationSubject;
   final String date;
+  final String applicationContent;
   ViewApplication({
     @required this.name,
     @required this.applicationSubject,
     @required this.date,
+    @required this.applicationContent,
   });
 
   @override
@@ -186,7 +147,7 @@ class ViewApplication extends StatelessWidget {
                 ),
                  child: Text(
                   
-                   'To, The Principal Delhi Public School Subject: Paper Verification Respected Sir, Kindly verify my maths paper please, kindly Kindly verify my maths paper please, h math  Kindly   verify my maths paper please, Kindly verify hehehhehe my maths paper please Thanking you Yours sincerely Nishant',
+                   '${this.applicationContent}',
                    textAlign: TextAlign.justify,
                    style: TextStyle(
                      fontSize: SizeConfig.b*3.2,
