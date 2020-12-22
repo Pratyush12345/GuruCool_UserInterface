@@ -4,14 +4,6 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:A/utils/color.dart';
 import '../utils/sizeConfig.dart';
 
-void main() {
-  runApp( Application(
-          name: 'Nishant Singh',
-          applicationSubject:
-              'Subject of the Application Subject of the Application...',
-          date: '12/11/20',
-        ));
-}
 
 
 
