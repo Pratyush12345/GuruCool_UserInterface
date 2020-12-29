@@ -1,6 +1,9 @@
+import 'package:qwe/utils/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../../utils/sizeConfig.dart';
+import 'package:qwe/utils/Colors.dart';
+
+
 
 class Bottom extends StatelessWidget {
   @override
@@ -8,22 +11,33 @@ class Bottom extends StatelessWidget {
     SizeConfig().init(context);
     return BottomNavigationBar(
         elevation: 5,
-        selectedFontSize: SizeConfig.b * 1.75,
-        unselectedFontSize: SizeConfig.b * 1.75,
-        selectedItemColor: Color(0xffF36C24),
-        iconSize: SizeConfig.b * 7,
+        selectedFontSize: SizeConfig.screenWidth * 0.0194,
+        unselectedFontSize:SizeConfig.screenWidth * 0.0194,
+        selectedItemColor: gc,
+        iconSize: SizeConfig.screenWidth*0.05,
         unselectedItemColor: Color(0xff999999),
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.view_week_rounded), label: 'COURSES'),
+              icon: Icon(Icons.home), title: Text('HOME') /*label: 'Home'*/
+              ),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.viewGrid), label: 'MODULES'),
+              icon: Icon(Icons.view_week),
+              title: Text('COURSES') /*label: 'COURSES'*/
+              ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_balance), label: 'MY INSTITUTE'),
+              icon: Icon(MdiIcons.viewGrid),
+              title: Text('MODULES') /* label: 'MODULES'*/
+              ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_box), label: 'PROFILE'),
-        ]);
+              icon: Icon(Icons.account_balance),
+              title: Text('MY INSTITUTE') /*label: 'MY INSTITUTE'*/
+              ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_box),
+              title: Text('PROFILE') /*label: 'PROFILE'*/
+              ),
+        ]
+        );
   }
 }

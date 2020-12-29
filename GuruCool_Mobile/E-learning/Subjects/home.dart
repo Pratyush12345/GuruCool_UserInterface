@@ -1,8 +1,9 @@
+import 'package:qwe/Subjects/dialogBoxSubjects.dart';
 import 'package:flutter/material.dart';
 import 'package:qwe/utils/Colors.dart';
 import 'package:qwe/Subjects/subject.dart';
 import 'package:qwe/utils/bottom.dart';
-import '../../utils/sizeConfig.dart';
+
 
 class Home extends StatelessWidget {
   final String courseId;
@@ -10,10 +11,10 @@ class Home extends StatelessWidget {
   final String schoolName;
   final String imgCollegeUrl;
   Home({
-    @required this.courseId,
-    @required this.passKey,
+    this.courseId,
+    this.passKey,
     @required this.schoolName,
-    @required this.imgCollegeUrl,
+    this.imgCollegeUrl,
   });
 
   @override
@@ -38,7 +39,7 @@ class Home extends StatelessWidget {
                     style: TextStyle(
                         color: gc,
                         fontWeight: FontWeight.w400,
-                        fontSize: SizeConfig.screenWidth * 0.05))),
+                        fontSize: SizeConfig.screenWidth * 0.05,),),),
             actions: [
               Row(children: [
                 IconButton(
@@ -47,16 +48,15 @@ class Home extends StatelessWidget {
                 CircleAvatar(
                     backgroundColor: Color(0xffA4A4A4),
 //backgroundImage: (),
-                    radius: SizeConfig.screenWidth *
-                        0.0862 /
-                        2), //to pass the imageUrl
-                SizedBox(width: SizeConfig.screenWidth * 0.025)
-              ])
+                    radius:SizeConfig.screenWidth*0.0862/2,), //to pass the imageUrl
+                SizedBox(width: SizeConfig.screenWidth*0.025,),
+              ]),
             ],
             bottom: TabBar(
                 indicatorColor: gc,
                 labelPadding: EdgeInsets.zero,
                 labelColor: gc,
+                indicatorWeight: SizeConfig.screenWidth*0.01111,
                 unselectedLabelColor: unselect,
                 tabs: [
                   Tab(
@@ -65,7 +65,7 @@ class Home extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w400,
-                        fontSize: SizeConfig.b * 3.8,
+                        fontSize: SizeConfig.screenWidth*0.0444,
                       ),
                     ),
                   ),
@@ -75,7 +75,8 @@ class Home extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: SizeConfig.b * 3.8),
+                          fontSize: SizeConfig.screenWidth*0.044,
+                          ),
                     ),
                   ),
                   Tab(
@@ -84,7 +85,8 @@ class Home extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: SizeConfig.b * 3.8),
+                          fontSize: SizeConfig.screenWidth*0.0444,
+                          ),
                     ),
                   ),
                   Tab(
@@ -93,26 +95,31 @@ class Home extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          fontSize: SizeConfig.b * 3.8),
+                          fontSize: SizeConfig.screenWidth*0.0444,
+                          ),
                     ),
                   ),
-                ]),
+                ]
+                ),
           ),
           bottomNavigationBar: Bottom(),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => {},
+            onPressed: () {
+              dialogBoxSubject(context);
+              print('pressed!');
+            },
             child: Icon(
               Icons.add,
-              size: SizeConfig.screenWidth * 0.0486 * 1.5,
+              size:SizeConfig.screenWidth*0.0486*1.5,
               color: Colors.white,
             ),
             backgroundColor: gc,
           ),
           body: TabBarView(children: [
             Subject(
-                sub: "Mathematics",
-                teacher:
-                    "Nikhil Vyas"), //passing parameters of subject list and teacher lists
+                sub:"Mathematics",
+                teacher:"Nikhil Vyas",
+                ), //passing parameters of subject list and teacher lists
             Container(
               color: Color(0xffE5E5E5),
               child: Center(
@@ -131,7 +138,9 @@ class Home extends StatelessWidget {
                 child: Text('Time-Table'),
               ),
             ),
-          ])),
+          ]
+          ),
+          ),
     );
   }
 }
