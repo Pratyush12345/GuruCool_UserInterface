@@ -1,0 +1,177 @@
+import 'package:qwe/utils/Colors.dart';
+import 'package:flutter/material.dart';
+
+class Subject extends StatelessWidget {
+  final String sub;
+  final String teacher;
+  final String courseId;
+  final passKey;
+  final String schoolName;
+
+  Subject({
+    @required this.sub,
+    @required this.teacher,
+    @required this.courseId,
+    @required this.passKey,
+    @required this.schoolName,
+  });
+
+  final TextEditingController _searchInputController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Container(
+      color: bgColor,
+      child: Column(
+        children: [
+          SizedBox(
+            height: SizeConfig.screenHeight * 0.03125,
+          ),
+          Container(
+            width: SizeConfig.screenWidth * 0.84,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  offset: Offset(0.0, 5.0),
+                  spreadRadius: SizeConfig.b * 0.2,
+                  blurRadius: SizeConfig.b * 0.5,
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(
+                SizeConfig.screenWidth * 0.0556,
+              ),
+            ),
+            child: Row(children: [
+              SizedBox(width: SizeConfig.b * 2),
+              Icon(Icons.search, color: gc),
+              SizedBox(width: SizeConfig.b * 2),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.b * 1,
+                  vertical: SizeConfig.v * 0.2,
+                ),
+                width: SizeConfig.screenWidth * 0.66,
+                child: TextField(
+                  textInputAction: TextInputAction.search,
+                  keyboardType: TextInputType.text,
+                  maxLines: 1,
+                  controller: _searchInputController,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Search subject by their name',
+                    isDense: true,
+                    hintStyle: TextStyle(
+                      fontSize: SizeConfig.screenWidth * 0.0333,
+                      color: Color.fromRGBO(140, 140, 140, 0.71),
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          SizedBox(height: SizeConfig.screenHeight * 0.03125),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  return Card(
+                    margin: EdgeInsets.only(
+                      right: SizeConfig.screenWidth * 0.0277,
+                      left: SizeConfig.screenWidth * 0.0277,
+                      top: index != 0
+                          ? SizeConfig.screenHeight * 0.03125 / 2
+                          : 0,
+                      bottom: SizeConfig.screenHeight * 0.03125 / 2,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        SizeConfig.screenWidth * 0.01278,
+                      ),
+                    ),
+                    elevation: 5,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: SizeConfig.screenWidth * 0.07,
+                        vertical: SizeConfig.screenHeight * 0.022,
+                      ),
+                      height: SizeConfig.screenHeight * 0.1703,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          SizeConfig.screenWidth * 0.01278,
+                        ),
+                        color: index % 2 == 0
+                            ? Color(0xffFF925C)
+                            : Color(0xff474C51),
+                      ),
+                      child: Row(children: [
+                        Container(
+                          width: SizeConfig.screenWidth * 0.5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                this.sub,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                  fontSize: SizeConfig.screenWidth * 0.0567,
+                                ),
+                              ),
+                              SizedBox(
+                                height: SizeConfig.screenHeight * 0.024375,
+                              ),
+                              ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: 3,
+                                  itemBuilder: (BuildContext ctxt, int index) {
+                                    return Column(children: [
+                                      Row(children: [
+                                        Icon(
+                                          Icons.person,
+                                          color: Colors.white,
+                                          size: SizeConfig.b * 3.4,
+                                        ),
+                                        SizedBox(width: SizeConfig.b * 2),
+                                        Text(
+                                          this.teacher,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white,
+                                            fontSize: SizeConfig.screenWidth *
+                                                0.0567 /
+                                                2,
+                                          ),
+                                        ),
+                                      ]),
+                                      SizedBox(height: 3),
+                                    ]);
+                                  }),
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                        Container(
+                          child: index % 2 == 0
+                              ? Image.asset('images/o.png')
+                              : Image.asset('images/p.png'),
+                        ),
+                      ]),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
